@@ -4,9 +4,8 @@ var after = require('after');
 var express = require('../')
   , request = require('supertest')
   , assert = require('assert')
-  , methods = require('methods');
+  , methods = require('../lib/utils').methods;
 
-var describePromises = global.Promise ? describe : describe.skip
 var shouldSkipQuery = require('./support/utils').shouldSkipQuery
 
 describe('app.router', function(){
@@ -963,7 +962,7 @@ describe('app.router', function(){
     })
   })
 
-  describePromises('promise support', function () {
+  describe('promise support', function () {
     it('should pass rejected promise value', function (done) {
       var app = express()
       var router = new express.Router()
